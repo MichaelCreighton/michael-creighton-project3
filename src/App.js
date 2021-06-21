@@ -14,11 +14,12 @@ function App() {
   const [movieInput, setMovieInput] = useState('');
 
   
+  
   useEffect(() => {
     // database references
     const dbRefBooks = firebase.database().ref('/Favorite Books');
     const dbRefMovies = firebase.database().ref('/Favorite Movies');
-    
+
     //pulls object: book1, book2, etc from firebase
     dbRefBooks.on('value', (response) => {
       // new var to hold the new state
@@ -29,7 +30,7 @@ function App() {
       // iterate through bookData to get each title
       for(let key in bookData) {
         // push each title to bookState array
-        bookState.push(bookData[key]);
+        bookState.push({key: key, name: bookData[key]});
         // use setBooks to update our state
       }      
       setBooks(bookState);
@@ -39,14 +40,14 @@ function App() {
     dbRefMovies.on('value', (response) => {
       // new var to hold the new state
       const movieState = [];
-      // store the response from firebase to bookData
+      // store the response from firebase to movieData
       // and use .val() to get the info for us
       const movieData = response.val();
-      // iterate through bookData to get each title
+      // iterate through movieData to get each title
       for(let key in movieData) {
-        // push each title to bookState array
-        movieState.push(movieData[key]);
-        // use setBooks to update our state
+        // push each title to movieState array
+        movieState.push({key: key, name: movieData[key]});
+        // use setMovies to update our state
       }      
       setMovies(movieState);
     })
@@ -74,14 +75,24 @@ function App() {
     setMovieInput('');
   }
 
+  const deleteBook = (bookId) => {
+    const dbRefBooks = firebase.database().ref('/Favorite Books');
+    dbRefBooks.child(bookId).remove();
+  }
+  const deleteMovie = (movieId) => {
+    const dbRefMovies = firebase.database().ref('/Favorite Movies');
+    dbRefMovies.child(movieId).remove();
+  }
+
   return (
     <div>
       <ul>
         {
         books.map((book) => {
           return(
-            <li>
-              <p>{book}</p>
+            <li key={book.key}>
+              <p>{book.name}</p>
+              <button onClick={() => deleteBook(book.key)}>Remove Book</button>
             </li>
           )
         })
@@ -89,8 +100,9 @@ function App() {
         {
         movies.map((movie) => {
           return(
-            <li>
-              <p>{movie}</p>
+            <li key={movie.key}>
+              <p>{movie.name}</p>
+              <button onClick={() => deleteMovie(movie.key)}> Remove Movie</button>
             </li>
           )
         })
