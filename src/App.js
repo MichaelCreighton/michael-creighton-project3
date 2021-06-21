@@ -5,15 +5,21 @@ import {useState, useEffect} from 'react';
 
 
 function App() {
+  // states for books and movies
   const [books, setBooks] = useState([]);
-  const [userInput, setUserInput] = useState('');
+  const [movies, setMovies] = useState([]);
 
-  const dbRefBooks = firebase.database().ref('/Favorite Books');
+  // states for interaction
+  const [bookInput, setBookInput] = useState('');
+  const [movieInput, setMovieInput] = useState('');
+
   
-
   useEffect(() => {
-
-    //pulls object: book1, book2, etc
+    // database references
+    const dbRefBooks = firebase.database().ref('/Favorite Books');
+    const dbRefMovies = firebase.database().ref('/Favorite Movies');
+    
+    //pulls object: book1, book2, etc from firebase
     dbRefBooks.on('value', (response) => {
       // new var to hold the new state
       const bookState = [];
@@ -25,38 +31,70 @@ function App() {
         // push each title to bookState array
         bookState.push(bookData[key]);
         // use setBooks to update our state
-        setBooks(bookState);
       }      
-      console.log(bookState);
-      // console.log(books);
-      
-      
+      setBooks(bookState);
+    })
+
+    //pulls object: movie1, movie2, etc from firebase
+    dbRefMovies.on('value', (response) => {
+      // new var to hold the new state
+      const movieState = [];
+      // store the response from firebase to bookData
+      // and use .val() to get the info for us
+      const movieData = response.val();
+      // iterate through bookData to get each title
+      for(let key in movieData) {
+        // push each title to bookState array
+        movieState.push(movieData[key]);
+        // use setBooks to update our state
+      }      
+      setMovies(movieState);
     })
 
   }, []);
 
   // An event listener to watch for input changes
-  const handleChanges = (event) => {
-    setUserInput(event.target.value);
+  const handleBookChanges = (event) => {
+    setBookInput(event.target.value);
   }
-
-  const handleClicks = (event) => {
+  const handleBookClicks = (event) => {
     event.preventDefault();
-    dbRefBooks.push(userInput);
-    setUserInput('');
+    const dbRefBooks = firebase.database().ref('/Favorite Books');
+    dbRefBooks.push(bookInput);
+    setBookInput('');
+  }
+  
+  const handleMovieChanges = (event) => {
+    setMovieInput(event.target.value);
+  }
+  const handleMovieClicks = (event) => {
+    event.preventDefault();
+    const dbRefMovies = firebase.database().ref('/Favorite Movies');
+    dbRefMovies.push(movieInput);
+    setMovieInput('');
   }
 
   return (
     <div>
       <ul>
-        {books.map((book) => {
-          
+        {
+        books.map((book) => {
           return(
             <li>
               <p>{book}</p>
             </li>
           )
-        })}
+        })
+        }
+        {
+        movies.map((movie) => {
+          return(
+            <li>
+              <p>{movie}</p>
+            </li>
+          )
+        })
+        }
       </ul>
 
       <form action="submit">
@@ -64,10 +102,21 @@ function App() {
         <input 
           type="text" 
           id="addBook" 
-          onChange={handleChanges}
-          value={userInput} 
+          onChange={handleBookChanges}
+          value={bookInput} 
         />
-        <button onClick={handleClicks} >Add Book</button>
+        <button onClick={handleBookClicks} >Add Book</button>
+      </form>
+
+      <form action="submit">
+        <label htmlFor="addMovie">Add a new favorite movie </label>
+        <input 
+          type="text" 
+          id="addMovie" 
+          onChange={handleMovieChanges}
+          value={movieInput} 
+        />
+        <button onClick={handleMovieClicks} >Add Movie</button>
       </form>
     </div>
   )
