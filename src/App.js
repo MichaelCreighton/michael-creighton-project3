@@ -87,63 +87,65 @@ function App() {
 
   return (
     
-    <div class="gridContainer" >
+    <div className="gridContainer" >
       <Header />
-      <div class="books" >
-        <ul class="bookList" >
-          {
-          books.map((book) => {
-            return(
-              <>
-              <li key={book.key}>
-                <p>{book.name}</p>
-                <button onClick={() => deleteBook(book.key)}>Remove Book</button>
-              </li>
-              </>
-            )
-          })
-          }
-        </ul>
+      <div className="wrapper">
+        <div className="books" >
+          <ul className="bookList" >
+            {
+            books.map((book) => {
+              return(
+                <>
+                <li key={book.key}>
+                  <p>{book.name}</p>
+                  <button onClick={() => deleteBook(book.key)}>Remove Book</button>
+                </li>
+                </>
+              )
+            })
+            }
+          </ul>
 
-        <form action="submit" class="bookForm" >
-          <label htmlFor="addBook">Add a new favorite book </label>
-          <input 
-            type="text" 
-            id="addBook" 
-            onChange={handleBookChanges}
-            value={bookInput} 
-          />
-          <button onClick={handleBookClicks} >Add Book</button>
-        </form>
-      </div>  {/* end class books */}
+          <form action="submit" className="bookForm" >
+            <label htmlFor="addBook">Add a new favorite book </label>
+            <input 
+              type="text" 
+              id="addBook" 
+              onChange={handleBookChanges}
+              value={bookInput} 
+            />
+            <button onClick={handleBookClicks} >Add Book</button>
+          </form>
+        </div>  {/* end class books */}
 
-      <div className="movies">
-        <ul class="movieList" >
-          {
-          movies.map((movie) => {
-            return(
-              <>
-              <li key={movie.key}>
-                <p>{movie.name}</p>
-                <button onClick={() => deleteMovie(movie.key)}> Remove Movie</button>
-              </li>
-              </>
-            )
-          })
-          }
-        </ul>
+        <div className="movies">
+          <ul className="movieList" >
+            {
+            movies.map((movie) => {
+              return(
+                <div>
+                  <li key={movie.key}>
+                    <p>{movie.name}</p>
+                    <button onClick={() => deleteMovie(movie.key)}> Remove Movie</button>
+                  </li>
+                </div>
+              )
+            })
+            }
+          </ul>
 
-        <form action="submit" class="movieForm">
-          <label htmlFor="addMovie">Add a new favorite movie </label>
-          <input 
-            type="text" 
-            id="addMovie" 
-            onChange={handleMovieChanges}
-            value={movieInput} 
-          />
-          <button onClick={handleMovieClicks} >Add Movie</button>
-        </form>
-      </div> {/* end class movies */}
+          <form action="submit" className="movieForm">
+            <label htmlFor="addMovie">Add a new favorite movie </label>
+            <input 
+              type="text" 
+              id="addMovie" 
+              onChange={handleMovieChanges}
+              value={movieInput} 
+            />
+            <button onClick={handleMovieClicks} >Add Movie</button>
+          </form>
+        </div> {/* end class movies */}
+      </div>
     </div>
   )
 }
