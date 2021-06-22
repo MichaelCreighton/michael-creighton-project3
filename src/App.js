@@ -1,5 +1,6 @@
 
 import './App.css';
+import Header from './Header.js';
 import firebase from './firebase';
 import {useState, useEffect} from 'react';
 
@@ -85,51 +86,64 @@ function App() {
   }
 
   return (
-    <div>
-      <ul>
-        {
-        books.map((book) => {
-          return(
-            <li key={book.key}>
-              <p>{book.name}</p>
-              <button onClick={() => deleteBook(book.key)}>Remove Book</button>
-            </li>
-          )
-        })
-        }
-        {
-        movies.map((movie) => {
-          return(
-            <li key={movie.key}>
-              <p>{movie.name}</p>
-              <button onClick={() => deleteMovie(movie.key)}> Remove Movie</button>
-            </li>
-          )
-        })
-        }
-      </ul>
+    
+    <div class="gridContainer" >
+      <Header />
+      <div class="books" >
+        <ul class="bookList" >
+          {
+          books.map((book) => {
+            return(
+              <>
+              <li key={book.key}>
+                <p>{book.name}</p>
+                <button onClick={() => deleteBook(book.key)}>Remove Book</button>
+              </li>
+              </>
+            )
+          })
+          }
+        </ul>
 
-      <form action="submit">
-        <label htmlFor="addBook">Add a new favorite book </label>
-        <input 
-          type="text" 
-          id="addBook" 
-          onChange={handleBookChanges}
-          value={bookInput} 
-        />
-        <button onClick={handleBookClicks} >Add Book</button>
-      </form>
+        <form action="submit" class="bookForm" >
+          <label htmlFor="addBook">Add a new favorite book </label>
+          <input 
+            type="text" 
+            id="addBook" 
+            onChange={handleBookChanges}
+            value={bookInput} 
+          />
+          <button onClick={handleBookClicks} >Add Book</button>
+        </form>
+      </div>  {/* end class books */}
 
-      <form action="submit">
-        <label htmlFor="addMovie">Add a new favorite movie </label>
-        <input 
-          type="text" 
-          id="addMovie" 
-          onChange={handleMovieChanges}
-          value={movieInput} 
-        />
-        <button onClick={handleMovieClicks} >Add Movie</button>
-      </form>
+      <div className="movies">
+        <ul class="movieList" >
+          {
+          movies.map((movie) => {
+            return(
+              <>
+              <li key={movie.key}>
+                <p>{movie.name}</p>
+                <button onClick={() => deleteMovie(movie.key)}> Remove Movie</button>
+              </li>
+              </>
+            )
+          })
+          }
+        </ul>
+
+        <form action="submit" class="movieForm">
+          <label htmlFor="addMovie">Add a new favorite movie </label>
+          <input 
+            type="text" 
+            id="addMovie" 
+            onChange={handleMovieChanges}
+            value={movieInput} 
+          />
+          <button onClick={handleMovieClicks} >Add Movie</button>
+        </form>
+      </div> {/* end class movies */}
     </div>
   )
 }

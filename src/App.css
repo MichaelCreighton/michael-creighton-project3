@@ -21,3 +21,17 @@
 li {
   list-style: none;
 }
+
+.gridContainer {
+  display: flex;
+  
+}
+
+.books {
+  display: flex;
+  flex-direction: column;
+}
+.movies {
+  display: flex;
+  flex-direction: column;
+}
