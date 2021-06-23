@@ -4,6 +4,7 @@
 
 html {
   font-size: 125%;
+  background: cornflowerblue;
 }
 img {
   display: block;
@@ -16,7 +17,9 @@ h2,
 h3,
 p,
 a,
-i {
+i,
+ul,
+ button {
   padding: 0;
   margin: 0;
 }
@@ -24,6 +27,7 @@ i {
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+  
 }
 
 header {
@@ -34,8 +38,36 @@ header {
   background-position: center;
 }
 h1 {
-  font-size: 3rem;
-  width: 50%;
+  font-family: 'Aclonica', sans-serif;
+  font-size: 4rem;
+  width: 40%;
+  padding: 5% 0 0 5%;
+  text-align: center;
+
+}
+h2 {
+  font-family: 'Aclonica', sans-serif;
+}
+p {
+  font-family: 'Bree Serif', serif;
+ 
+}
+h2 {
+  padding-bottom: 20px;
+  text-shadow: ;
+}
+i {
+  padding-left: 5px;
+}
+button {
+  background: rgba(0, 0, 0, 0.19) ;
+  border: none;
+}
+form i {
+  font-size: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+  padding-left: 0;
+  line-height: 0;
 }
 
 
@@ -44,17 +76,74 @@ li {
   list-style: none;
 }
 
-.gridContainer {
-  display: flex;
-  flex-direction: column;
-  
+form {
+  padding-top: 30px;
+  text-align: center;
 }
 
+.bookMovieGridContainer {
+  
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 43% 14% 43%;
+  height: 55vh;
+  padding-top: 40px;
+  /* flex-direction: column; */
+  
+}
 .books {
-  display: flex;
-  flex-direction: column;
+  grid-column: 1 / 2;
+  text-align: center;
 }
+#borderImage1 {
+  border: 40px solid transparent;
+  padding: 15px;
+  border-image: url(./assets/bookshelf-background-bookcase-with-books-vector-34852681.jpg) 20% round;
+}
+
 .movies {
+  grid-column: 3 / 4;
+  border: 10px solid cornflowerblue;
+  text-align: center;
+}
+
+#borderImage2 {
+  border: 40px solid transparent;
+  padding: 15px;
+  border-image: url(./assets/old-film-strip-260nw-59294353\ copy.jpg) 20% round;
+}
+input {
+  box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+  margin-right: 10px;
+  
+}
+.books p,
+.movies p {
+  padding: 5px;
+}
+.bookForm {
+  grid-column: 1 / 2;
+  text-align: center;
+}
+.movieForm {
+  grid-column: 3 / 4;
+  text-align: center;
+}
+
+footer {
+  /* grid-column: 2 / 4; */
+  padding: 20px 0 10px 0;
+  text-align: center;
+}
+/* i {
+  box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+} */
+
+/* .books {
   display: flex;
   flex-direction: column;
-}
+} */
+/* .movies {
+  display: flex;
+  flex-direction: column;
+} */
