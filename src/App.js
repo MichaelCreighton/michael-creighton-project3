@@ -13,10 +13,12 @@ function App() {
   // states for books and movies
   const [books, setBooks] = useState([]);
   const [movies, setMovies] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   // states for interaction
   const [bookInput, setBookInput] = useState('');
   const [movieInput, setMovieInput] = useState('');
+  // const [userInput, setUserInput] = useState('');
 
   
   
@@ -24,7 +26,7 @@ function App() {
     // database references
     const dbRefBooks = firebase.database().ref('/Favorite Books');
     const dbRefMovies = firebase.database().ref('/Favorite Movies');
-
+    // const dbRefUsers = firebase.database().ref('/users');
     //pulls object: book1, book2, etc from firebase
     dbRefBooks.on('value', (response) => {
       // new var to hold the new state
@@ -56,6 +58,16 @@ function App() {
       }      
       setMovies(movieState);
     })
+    // dbRefUsers.on('value', (response) => {
+    //   const userState = [];
+    //   const userData = response.val();
+    //   console.log(userData);
+      
+    //   // for(let key in userData) {
+    //   //   userState.push({key: key, name: userData[key]});
+    //   }
+    //   // setUsers(userState);
+    // )
 
   }, []);
 
@@ -96,6 +108,14 @@ function App() {
     <div>
       <Header />
       <div className="wrapper">
+        <section className="users">
+          <form >
+            <h2>User Name: Mikl</h2>
+            <select name="currentUser" id="currentUser" ></select>
+            
+            <option value="mikl">mikl</option>
+          </form>
+        </section>
         <section className="bookMovieGridContainer">
           <section className="books" id="borderImage1">
             <ul className="bookList" >
@@ -135,7 +155,7 @@ function App() {
             
           </section> {/* end class movies */}
           <form action="submit" className="bookForm" >
-              <label htmlFor="addBook">Add a new book </label>
+              <label htmlFor="addBook">Add new book </label>
               <input 
                 type="text" 
                 id="addBook" 
@@ -145,7 +165,7 @@ function App() {
               <button onClick={handleBookClicks} type="submit"><i class="far fa-plus-square"></i></button>
             </form>
             <form action="submit" className="movieForm">
-              <label htmlFor="addMovie">Add a new movie </label>
+              <label htmlFor="addMovie">Add new movie </label>
               <input 
                 type="text" 
                 id="addMovie" 
