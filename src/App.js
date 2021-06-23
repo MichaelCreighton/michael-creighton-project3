@@ -13,12 +13,12 @@ function App() {
   // states for books and movies
   const [books, setBooks] = useState([]);
   const [movies, setMovies] = useState([]);
-  // const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   // states for interaction
   const [bookInput, setBookInput] = useState('');
   const [movieInput, setMovieInput] = useState('');
-  // const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState('');
 
   
   
@@ -26,7 +26,8 @@ function App() {
     // database references
     const dbRefBooks = firebase.database().ref('/Favorite Books');
     const dbRefMovies = firebase.database().ref('/Favorite Movies');
-    // const dbRefUsers = firebase.database().ref('/users');
+    const dbRefUsers = firebase.database().ref('/users');
+
     //pulls object: book1, book2, etc from firebase
     dbRefBooks.on('value', (response) => {
       // new var to hold the new state
@@ -63,11 +64,13 @@ function App() {
     //   const userData = response.val();
     //   console.log(userData);
       
-    //   // for(let key in userData) {
-    //   //   userState.push({key: key, name: userData[key]});
+    //   for(let key in userData) {
+    //     userState.push(userData[key]);
+    //     console.log(userState);
+        
     //   }
-    //   // setUsers(userState);
-    // )
+    //   setUsers(userState);
+    // })
 
   }, []);
 
@@ -109,71 +112,81 @@ function App() {
       <Header />
       <div className="wrapper">
         <section className="users">
-          <form >
-            <h2>User Name: Mikl</h2>
-            <select name="currentUser" id="currentUser" ></select>
-            
-            <option value="mikl">mikl</option>
-          </form>
+          <h2> Mike's Favorites  </h2>
+            {/* {
+              users.map((user) => {
+                return(
+                  <form className="userForm" >
+                    <h2>User Name: </h2>
+                    <select name="currentUser" id="currentUser">
+                      <option value={user}>{user}</option>
+                    </select>
+                  </form>
+                )
+              })
+            } */}
+
         </section>
         <section className="bookMovieGridContainer">
-          <section className="books" id="borderImage1">
-            <ul className="bookList" >
-              <h2>FAVORITE BOOKS</h2>
-              {
-              books.map((book) => {
-                return(
-                  <>
-                  <li key={book.key}>
-                    <p>{book.name} <i className="far fa-trash-alt" onClick={() => deleteBook(book.key)} ></i> </p>
-                  </li>
-                  </>
-                )
-              })
-              }
-            </ul>
-
-            
-          </section>  {/* end class books */}
-
-          <section className="movies" id="borderImage2">
-            <h2>FAVORITE MOVIES</h2>
-            <ul className="movieList" >
-              {
-              movies.map((movie) => {
-                return(
-                  <div>
-                    <li key={movie.key}>
-                      <p>{movie.name} <i className="far fa-trash-alt" onClick={() => deleteMovie(movie.key)} ></i> </p>
+          <section className="bookAndForm">
+            <section className="books" id="borderImage1">
+              <ul className="bookList" >
+                <h2>FAVORITE BOOKS</h2>
+                {
+                books.map((book) => {
+                  return(
+                    <>
+                    <li key={book.key}>
+                      <p>{book.name} <i className="far fa-trash-alt" onClick={() => deleteBook(book.key)} ></i> </p>
                     </li>
-                  </div>
-                )
-              })
-              }
-            </ul>
+                    </>
+                  )
+                })
+                }
+              </ul>
+            </section>  {/* end class books */}
 
+            <form action="submit" className="bookForm" >
+            <label htmlFor="addBook">Add new book </label>
+            <input 
+              type="text" 
+              id="addBook" 
+              onChange={handleBookChanges}
+              value={bookInput} 
+            />
+            <button onClick={handleBookClicks} type="submit"><i class="far fa-plus-square"></i></button>
+          </form>
+          </section>
+
+          <section className="moviesAndForm">
+            <section className="movies" id="borderImage2">
+              <h2>FAVORITE MOVIES</h2>
+              <ul className="movieList" >
+                {
+                movies.map((movie) => {
+                  return(
+                    <div>
+                      <li key={movie.key}>
+                        <p>{movie.name} <i className="far fa-trash-alt" onClick={() => deleteMovie(movie.key)} ></i> </p>
+                      </li>
+                    </div>
+                  )
+                })
+                }
+              </ul>
+            </section> {/* end class movies */}
             
-          </section> {/* end class movies */}
-          <form action="submit" className="bookForm" >
-              <label htmlFor="addBook">Add new book </label>
-              <input 
-                type="text" 
-                id="addBook" 
-                onChange={handleBookChanges}
-                value={bookInput} 
-              />
-              <button onClick={handleBookClicks} type="submit"><i class="far fa-plus-square"></i></button>
-            </form>
-            <form action="submit" className="movieForm">
-              <label htmlFor="addMovie">Add new movie </label>
-              <input 
-                type="text" 
-                id="addMovie" 
-                onChange={handleMovieChanges}
-                value={movieInput} 
-              />
-              <button onClick={handleMovieClicks}><i class="far fa-plus-square"></i></button>
-            </form>
+              <form action="submit" className="movieForm">
+                <label htmlFor="addMovie">Add new movie </label>
+                <input 
+                  type="text" 
+                  id="addMovie" 
+                  onChange={handleMovieChanges}
+                  value={movieInput} 
+                />
+                <button onClick={handleMovieClicks}><i class="far fa-plus-square"></i></button>
+              </form>
+            </section>
         </section>
         
       </div>
