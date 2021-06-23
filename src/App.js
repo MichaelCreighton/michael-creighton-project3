@@ -13,12 +13,10 @@ function App() {
   // states for books and movies
   const [books, setBooks] = useState([]);
   const [movies, setMovies] = useState([]);
-  const [users, setUsers] = useState([]);
 
   // states for interaction
   const [bookInput, setBookInput] = useState('');
   const [movieInput, setMovieInput] = useState('');
-  const [userInput, setUserInput] = useState('');
 
   
   
@@ -26,7 +24,6 @@ function App() {
     // database references
     const dbRefBooks = firebase.database().ref('/Favorite Books');
     const dbRefMovies = firebase.database().ref('/Favorite Movies');
-    const dbRefUsers = firebase.database().ref('/users');
 
     //pulls object: book1, book2, etc from firebase
     dbRefBooks.on('value', (response) => {
@@ -59,18 +56,6 @@ function App() {
       }      
       setMovies(movieState);
     })
-    // dbRefUsers.on('value', (response) => {
-    //   const userState = [];
-    //   const userData = response.val();
-    //   console.log(userData);
-      
-    //   for(let key in userData) {
-    //     userState.push(userData[key]);
-    //     console.log(userState);
-        
-    //   }
-    //   setUsers(userState);
-    // })
 
   }, []);
 
@@ -113,19 +98,6 @@ function App() {
       <div className="wrapper">
         <section className="users">
           <h2> Mike's Favorites  </h2>
-            {/* {
-              users.map((user) => {
-                return(
-                  <form className="userForm" >
-                    <h2>User Name: </h2>
-                    <select name="currentUser" id="currentUser">
-                      <option value={user}>{user}</option>
-                    </select>
-                  </form>
-                )
-              })
-            } */}
-
         </section>
         <section className="bookMovieGridContainer">
           <section className="bookAndForm">
