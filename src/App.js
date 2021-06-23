@@ -119,7 +119,8 @@ function App() {
             </section>  {/* end class books */}
 
             <form action="submit" className="bookForm" >
-            <label htmlFor="addBook">Add new book </label>
+            {/* <label htmlFor="addBook">Add new book: </label> */}
+            <p>Add new book: </p>
             <input 
               type="text" 
               id="addBook" 
@@ -127,6 +128,7 @@ function App() {
               value={bookInput} 
             />
             <button onClick={handleBookClicks} type="submit"><i class="far fa-plus-square"></i></button>
+            
           </form>
           </section>
 
@@ -149,14 +151,15 @@ function App() {
             </section> {/* end class movies */}
             
               <form action="submit" className="movieForm">
-                <label htmlFor="addMovie">Add new movie </label>
+                {/* <label htmlFor="addMovie">Add new movie: </label> */}
+                <p>Add new movie: </p>
                 <input 
                   type="text" 
                   id="addMovie" 
                   onChange={handleMovieChanges}
                   value={movieInput} 
                 />
-                <button onClick={handleMovieClicks}><i class="far fa-plus-square"></i></button>
+                <button onClick={handleMovieClicks}><i className="far fa-plus-square"></i></button>
               </form>
             </section>
         </section>
