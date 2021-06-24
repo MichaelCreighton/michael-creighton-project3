@@ -81,7 +81,7 @@ function App() {
     event.preventDefault();
     const dbRefMovies = firebase.database().ref('/Favorite Movies');
     if(movieInput !== '') {
-      dbRefBooks.push(movieInput);
+      dbRefMovies.push(movieInput);
     }
     setMovieInput('');
   }
