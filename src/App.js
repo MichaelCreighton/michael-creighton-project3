@@ -99,7 +99,7 @@ function App() {
       <Header />
       <div className="wrapper">
         <section className="users">
-          <h2> Mike's Favorites  </h2>
+          <h2>Add Your Favorites</h2>
         </section>
 
         {/* section to display book list  */}
