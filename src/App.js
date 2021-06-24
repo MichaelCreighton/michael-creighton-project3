@@ -57,7 +57,7 @@ function App() {
 
   }, []);
 
-  // An event listener to watch for input changes
+  // Event listeners to watch for input changes
   const handleBookChanges = (event) => {
     setBookInput(event.target.value);
   }
@@ -101,6 +101,8 @@ function App() {
         <section className="users">
           <h2> Mike's Favorites  </h2>
         </section>
+
+        {/* section to display book list  */}
         <section className="bookMovieGridContainer">
           <section className="bookAndForm">
             <section className="books" id="borderImage1">
@@ -120,6 +122,7 @@ function App() {
               </ul>
             </section>  {/* end class books */}
 
+              {/* section to add new books to list  */}
             <form action="submit" className="bookForm" >
             {/* <label htmlFor="addBook">Add new book: </label> */}
             <p>Add new book: </p>
@@ -134,6 +137,7 @@ function App() {
           </form>
           </section>
 
+          {/* section to display movie list  */}
           <section className="moviesAndForm">
             <section className="movies" id="borderImage2">
               <h2>FAVORITE MOVIES</h2>
@@ -152,6 +156,7 @@ function App() {
               </ul>
             </section> {/* end class movies */}
             
+              {/* section to add new movies to list  */}
               <form action="submit" className="movieForm">
                 {/* <label htmlFor="addMovie">Add new movie: </label> */}
                 <p>Add new movie: </p>

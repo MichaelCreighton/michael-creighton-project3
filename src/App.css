@@ -6,6 +6,7 @@ html {
   font-size: 125%;
   background: rgba(100, 148, 237, 0.647);
 }
+
 img {
   display: block;
   width: 100%;
@@ -37,6 +38,7 @@ header {
   background-size: cover;
   background-position: center;
 }
+
 h1 {
   font-family: 'Aclonica', sans-serif;
   font-size: 2rem;
@@ -48,6 +50,7 @@ h1 {
   max-height: 50vh;
 
 }
+
 h2 {
   font-family: 'Aclonica', sans-serif;
   color: black;
@@ -62,18 +65,18 @@ p {
 i {
   padding-left: 5px;
 }
+
 button {
   background: rgba(0, 0, 0, 0.19) ;
   border: none;
 }
+
 form i {
   font-size: 1.5rem;
   box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
   padding-left: 0;
   line-height: 0;
 }
-
-
 
 li {
   list-style: none;
@@ -83,24 +86,25 @@ form {
   padding-top: 30px;
   
 }
+
 .users {
   text-align: center;
   padding-top: 20px;
 }
 
 .bookMovieGridContainer {
-  
   font-size: 1rem;
   display: grid; 
   gap: 40px;
   grid-template-columns: 45% 45%;
   padding: 0 20px 0 20px;
-  
 }
+
 .books {
   grid-column: 1 / 2;
   text-align: center;
 }
+
 #borderImage1 {
   border: 60px solid transparent;
   padding: 15px 15px 15px 0;
@@ -113,7 +117,6 @@ form {
   grid-column: 2 / 3;
   border: 10px solid cornflowerblue;
   text-align: center;
-  
 }
 
 #borderImage2 {
@@ -123,19 +126,23 @@ form {
   box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 10px 10px;
   margin-top: 20px;  
 }
+
 input {
   box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
   margin-right: 15px;
   font-size: 1.3rem;
 }
+
 .books p,
 .movies p {
   padding: 5px;
   letter-spacing: 0.4px;
 }
+
 .bookForm {
   grid-column: 1 / 2;
 }
+
 .movieForm {
   grid-column: 2 / 3;
 }
@@ -144,6 +151,7 @@ footer {
   padding: 150px 0 10px 0;
   text-align: center;
 }
+
 footer a {
   color: #ea593e;
 }
@@ -154,11 +162,11 @@ footer a {
   .bookMovieGridContainer {
     grid-template-columns: 100%;
   }
+
   .movies,
   .movieForm {
     grid-column: 1 / 2;
   }
-
 }
 
 @media(max-width: 1000px) {
@@ -166,15 +174,14 @@ footer a {
     height: 50vh;
   }
 }
+
 @media(max-width: 630px) {
-  /* header {
-    height: 50vh;
-  } */
   h1 {
     font-size: 1.2rem;
     padding-top: 20%;
     height: 30vh;
   }
+
   footer {
     font-size: 1rem;
   }
@@ -184,19 +191,18 @@ footer a {
   p {
     font-size: 0.6rem;
   }
+
   h1 {
     padding-top: 30%;
   }
 }
+
 @media(max-width: 370px) {
-  /* h1 {
-    padding: 3% 0 0 3%;
-  } */
   .users h2{
     font-size: 1.3rem;
   }
+
   h2 {
     font-size: 0.7rem;
   }
-
 }
