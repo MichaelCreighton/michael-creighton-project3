@@ -18,8 +18,7 @@ function App() {
   const [bookInput, setBookInput] = useState('');
   const [movieInput, setMovieInput] = useState('');
 
-  
-  
+
   useEffect(() => {
     // database references
     const dbRefBooks = firebase.database().ref('/Favorite Books');
@@ -59,7 +58,7 @@ function App() {
 
   }, []);
 
-  // An event listener to watch for input changes
+  // Event listeners to watch for input changes
   const handleBookChanges = (event) => {
     setBookInput(event.target.value);
   }
@@ -86,6 +85,7 @@ function App() {
     setMovieInput('');
   }
 
+  // Functions to remove items from lists
   const deleteBook = (bookId) => {
     const dbRefBooks = firebase.database().ref('/Favorite Books');
     dbRefBooks.child(bookId).remove();
@@ -103,6 +103,8 @@ function App() {
         <section className="users">
           <h2> Mike's Favorites  </h2>
         </section>
+
+        {/* // Section to display book list  */}
         <section className="bookMovieGridContainer">
           <section className="bookAndForm">
             <section className="books" id="borderImage1">
@@ -122,20 +124,21 @@ function App() {
               </ul>
             </section>  {/* end class books */}
 
+              {/* // form to add new books to list  */}
             <form action="submit" className="bookForm" >
-            {/* <label htmlFor="addBook">Add new book: </label> */}
-            <p>Add new book: </p>
-            <input 
-              type="text" 
-              id="addBook" 
-              onChange={handleBookChanges}
-              value={bookInput} 
-            />
-            <button onClick={handleBookClicks} type="submit"><i class="far fa-plus-square"></i></button>
+              <p>Add new book: </p>
+              <input 
+                type="text" 
+                id="addBook" 
+                onChange={handleBookChanges}
+                value={bookInput} 
+              />
+              <button onClick={handleBookClicks} type="submit"><i class="far fa-plus-square"></i></button>
             
-          </form>
+            </form>
           </section>
-
+            
+            {/* // section to display movie list  */}
           <section className="moviesAndForm">
             <section className="movies" id="borderImage2">
               <h2>FAVORITE MOVIES</h2>
@@ -154,8 +157,8 @@ function App() {
               </ul>
             </section> {/* end class movies */}
             
+                {/* // form to add new movies to list  */}
               <form action="submit" className="movieForm">
-                {/* <label htmlFor="addMovie">Add new movie: </label> */}
                 <p>Add new movie: </p>
                 <input 
                   type="text" 
