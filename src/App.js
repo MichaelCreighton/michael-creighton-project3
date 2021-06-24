@@ -67,7 +67,9 @@ function App() {
   const handleBookClicks = (event) => {
     event.preventDefault();
     const dbRefBooks = firebase.database().ref('/Favorite Books');
-    dbRefBooks.push(bookInput);
+    if(bookInput !== '') {
+      dbRefBooks.push(bookInput);
+    }
     setBookInput('');
   }
   
@@ -78,7 +80,9 @@ function App() {
   const handleMovieClicks = (event) => {
     event.preventDefault();
     const dbRefMovies = firebase.database().ref('/Favorite Movies');
-    dbRefMovies.push(movieInput);
+    if(movieInput !== '') {
+      dbRefBooks.push(movieInput);
+    }
     setMovieInput('');
   }
 
