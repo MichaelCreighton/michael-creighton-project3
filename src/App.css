@@ -106,9 +106,8 @@ form {
 #borderImage1 {
   border: 60px solid transparent;
   padding: 15px;
-  /* border-radius: 10%; */
   border-image: url(./assets/bookshelf-background-bookcase-with-books-vector-34852681.jpg) 20% round;
-  box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 20px 30px, rgba(0, 0, 0, 0.23) 0 20px 20px;
   margin-top: 20px;
 }
 
@@ -123,7 +122,7 @@ form {
   border: 60px solid transparent;
   padding: 15px;
   border-image: url(./assets/old-film-strip-260nw-59294353\ copy.jpg) 20% round;
-  box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 20px 30px, rgba(0, 0, 0, 0.23) 0 20px 20px;
   margin-top: 20px;  
 }
 input {
